@@ -36,7 +36,7 @@ public class Main
         }
         catch(Exception e)
         {
-        
+    
             System.out.println("Arguments Given were not Valid");
             return;
         }
@@ -45,6 +45,14 @@ public class Main
     
         xOffset = x + (maxWidth / 2);
         zOffset = z + (maxWidth / 2);
+    
+    
+        int regionRange = (maxWidth / 16 / 32) + 2;
+    
+        int regionX, regionZ;
+    
+        regionX = x / 16 / 32;
+        regionZ = z / 16 / 32;
     
         BufferedImage largerImage = new BufferedImage(maxWidth, maxWidth, BufferedImage.TYPE_3BYTE_BGR);
     
@@ -68,6 +76,15 @@ public class Main
                 byte[] imageBytes = readPhoto(journeyMapImage);
                 BufferedImage currentImage = ImageIO.read(new ByteArrayInputStream(imageBytes));
             
+                if(!(Math.abs(regionX - currentFilesRegionX) < regionRange))
+                {
+                    continue;
+                }
+            
+                if(!(Math.abs(regionZ - currentFilesRegionZ) < regionRange))
+                {
+                    continue;
+                }
             
                 for(int rows = 0; rows < journeyMapRegionImageSize; rows++)
                 {
