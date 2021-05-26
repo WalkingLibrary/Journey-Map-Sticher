@@ -30,7 +30,6 @@ apply plugin: 'idea'
 apply plugin: "com.zoltu.git-versioning"
 archivesBaseName = "Jumbo-Dinosaurs-WebServer-Netty"
 sourceCompatibility = 1.8
-def versionInfo = ZoltuGitVersioning.versionInfo
 sourceSets.main.java.srcDir "src/main/Java"
 sourceSets.main.resources.srcDir "src/resources"
 
